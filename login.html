@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <title>Login - SnapEat</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html">
+        <img class="logo" alt="SnapEat logo" src="img/snapeat.png" />
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a class="main-nav-link" href="index.html#how">How it works</a></li>
+          <li><a class="main-nav-link" href="index.html#meals">Meals</a></li>
+          <li><a class="main-nav-link" href="index.html#testimonials">Testimonials</a></li>
+          <li><a class="main-nav-link" href="index.html#pricing">Pricing</a></li>
+          <li><a class="main-nav-link nav-cta" href="signup.html">Sign up</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav" aria-label="Toggle navigation" aria-expanded="false">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+    <main>
+      <section class="section-cta">
+        <div class="container center-text">
+          <h2 class="heading-secondary">Sign in to your account</h2>
+        </div>
+        <div class="container">
+          <form id="login-form" class="cta-form" style="max-width:40rem;margin:auto;">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required />
+
+            <button type="submit" class="btn btn--full">Log in</button>
+          </form>
+          <p class="center-text" style="margin-top:2rem;">
+            Don't have an account? <a href="signup.html" class="link">Sign up</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container grid grid--footer">
+        <div class="logo-col">
+          <a href="index.html" class="footer-logo">
+            <img src="img/snapeat.png" alt="SnapEat logo" />
+          </a>
+          <ul class="social-links">
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-facebook"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
+              ></a>
+            </li>
+          </ul>
+
+          <p class="copyright">
+            Copyright &copy; 2027 by SnapEat, Inc. All rights reserved.
+          </p>
+        </div>
+        <!-- other columns omitted for brevity -->
+      </div>
+    </footer>
+
+    <script>
+      // reuse mobile nav/ sticky header script
+      const btnNav = document.querySelector('.btn-mobile-nav');
+      const headerEl = document.querySelector('.header');
+
+      btnNav.addEventListener('click', function () {
+        const open = headerEl.classList.toggle('nav-open');
+        btnNav.setAttribute('aria-expanded', open);
+      });
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) headerEl.classList.add('sticky');
+        else headerEl.classList.remove('sticky');
+      });
+
+      // login logic using localStorage
+      document.getElementById('login-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const pwd = document.getElementById('password').value;
+        const users = JSON.parse(localStorage.getItem('snapeat-users') || '[]');
+        const user = users.find(u => u.email === email && u.password === pwd);
+        if (user) {
+          alert('Welcome back, ' + user.name + '!');
+          // simulate login by storing current user
+          localStorage.setItem('snapeat-current', JSON.stringify(user));
+          window.location.href = 'index.html';
+        } else {
+          alert('Invalid email or password');
+        }
+      });
+    </script>
+  </body>
+</html>
