@@ -41,7 +41,12 @@
           <li><a class="main-nav-link" href="#testimonials">Testimonials</a></li>
           <li><a class="main-nav-link" href="#pricing">Pricing</a></li>
           <li><a class="main-nav-link" href="login.html">Login</a></li>
+          <li><a class="main-nav-link" href="about.html">About</a></li>
           <li><a class="main-nav-link nav-cta" href="signup.html">Sign up</a></li>
+          <li><a class="main-nav-link" href="cart.html">
+              <ion-icon name="cart-outline"></ion-icon>
+              <span class="cart-count" id="cart-count">0</span>
+            </a></li>
         </ul>
       </nav>
 
@@ -88,6 +93,25 @@
               alt="Woman enjoying food, meals in storage container, and food bowls on a table"
             />
           </div>
+        </div>
+      </section>
+
+      <!-- about section added -->
+      <section id="about" class="section-about" style="padding:9.6rem 0;">
+        <div class="container center-text">
+          <span class="subheading">About SnapEat</span>
+          <h2 class="heading-secondary">Our Story &amp; Mission</h2>
+          <p class="paragraph">
+            SnapEat began with the goal of making nutritious meals effortless.
+            Our team blends technology with culinary expertise to craft a
+            personalized dining experience for every customer. Sustainability
+            and simplicity are at the heart of everything we do.
+          </p>
+          <p class="paragraph">
+            Whether you're too busy to cook or just want to eat cleaner,
+            SnapEat delivers fresh, chef-prepared meals right to your door.
+            Join us as we redefine convenient healthy eating.
+          </p>
         </div>
       </section>
 
@@ -621,30 +645,7 @@
       </section>
     </main>
 
-    <!-- small script for mobile navigation toggle and sticky header -->
-    <script>
-      const btnNav = document.querySelector('.btn-mobile-nav');
-      const headerEl = document.querySelector('.header');
-
-      btnNav.addEventListener('click', function () {
-        const open = headerEl.classList.toggle('nav-open');
-        btnNav.setAttribute('aria-expanded', open);
-      });
-
-      // close mobile nav when one of the links is clicked
-      document.querySelectorAll('.main-nav-link').forEach((link) => {
-        link.addEventListener('click', function () {
-          headerEl.classList.remove('nav-open');
-          btnNav.setAttribute('aria-expanded', false);
-        });
-      });
-
-      // add sticky class when scrolling
-      window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) headerEl.classList.add('sticky');
-        else headerEl.classList.remove('sticky');
-      });
-    </script>
+    <script src="js/script.js"></script>
 
     <footer class="footer">
       <div class="container grid grid--footer">

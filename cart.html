@@ -24,10 +24,9 @@
       src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
     ></script>
 
-    <title>All Recipes - SnapEat</title>
+    <title>Cart - SnapEat</title>
   </head>
   <body>
-    <!-- reuse the header from index for consistency -->
     <header class="header">
       <a href="index.html">
         <img class="logo" alt="SnapEat logo" src="img/snapeat.png" />
@@ -37,10 +36,7 @@
         <ul class="main-nav-list">
           <li><a class="main-nav-link" href="index.html#how">How it works</a></li>
           <li><a class="main-nav-link" href="index.html#meals">Meals</a></li>
-          <li><a class="main-nav-link" href="index.html#testimonials">Testimonials</a></li>
-          <li><a class="main-nav-link" href="index.html#pricing">Pricing</a></li>
-          <li><a class="main-nav-link" href="login.html">Login</a></li>
-          <li><a class="main-nav-link" href="about.html">About</a></li>
+          <li><a class="main-nav-link" href="recipes.html">Recipes</a></li>
           <li><a class="main-nav-link nav-cta" href="signup.html">Sign up</a></li>
           <li><a class="main-nav-link" href="cart.html">
               <ion-icon name="cart-outline"></ion-icon>
@@ -58,12 +54,14 @@
     <main>
       <section class="section-meals">
         <div class="container center-text">
-          <span class="subheading">All recipes</span>
-          <h2 class="heading-secondary">Browse our full catalogue</h2>
+          <span class="subheading">Your cart</span>
+          <h2 class="heading-secondary">Review &amp; checkout</h2>
         </div>
-
-        <div class="container grid grid--3-cols margin-bottom-md" id="recipes-grid">
-          <!-- recipes will be inserted here via JavaScript -->
+        <div class="container" id="cart-items">
+          <!-- cart items will be injected here -->
+        </div>
+        <div class="container center-text" style="margin-top:2rem;">
+          <button id="checkout-btn" class="btn btn--full">Checkout</button>
         </div>
       </section>
     </main>
