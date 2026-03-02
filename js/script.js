@@ -143,9 +143,13 @@ function renderCartPage() {
   const cart = getCart();
   if (cart.length === 0) {
     container.innerHTML = '<p>Your cart is empty.</p>';
-    document.getElementById('checkout-btn').disabled = true;
+    const paymentForm = document.getElementById('payment-form');
+    if (paymentForm) paymentForm.style.display = 'none';
     return;
   }
+  const paymentForm = document.getElementById('payment-form');
+  if (paymentForm) paymentForm.style.display = '';
+
   container.innerHTML = '';
   cart.forEach((item, idx) => {
     const div = document.createElement('div');
@@ -172,12 +176,15 @@ function renderCartPage() {
 
 function initCartPage() {
   renderCartPage();
-  const checkoutBtn = document.getElementById('checkout-btn');
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', function () {
+  const paymentForm = document.getElementById('payment-form');
+  if (paymentForm) {
+    paymentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // simple validation already handled by HTML patterns
       alert('Payment successful! Thank you for your order.');
       clearCart();
       renderCartPage();
+      paymentForm.reset();
     });
   }
 }
