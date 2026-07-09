@@ -33,14 +33,14 @@ function initAuthForms() {
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
-      const pwd = document.getElementById('password').value;
+      const email = document.getElementById('login-email').value;
+      const pwd = document.getElementById('login-password').value;
       const users = JSON.parse(localStorage.getItem('snapeat-users') || '[]');
       const user = users.find(u => u.email === email && u.password === pwd);
       if (user) {
         alert('Welcome back, ' + user.name + '!');
         localStorage.setItem('snapeat-current', JSON.stringify(user));
-        window.location.href = 'index.html';
+        window.location.href = '#';
       } else {
         alert('Invalid email or password');
       }
@@ -50,9 +50,9 @@ function initAuthForms() {
   if (signupForm) {
     signupForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const pwd = document.getElementById('password').value;
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      const pwd = document.getElementById('signup-password').value;
       const users = JSON.parse(localStorage.getItem('snapeat-users') || '[]');
 
       if (users.find(u => u.email === email)) {
@@ -63,7 +63,7 @@ function initAuthForms() {
       users.push({ name, email, password: pwd });
       localStorage.setItem('snapeat-users', JSON.stringify(users));
       alert('Account created! You can now log in.');
-      window.location.href = 'login.html';
+      window.location.href = '#login';
     });
   }
 }
